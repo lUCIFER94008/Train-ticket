@@ -1,0 +1,21 @@
+{
+  "name": "train-trail-booking-system",
+  "version": "1.0.0",
+  "description": "A responsive train ticket booking web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "train",
+    "booking",
+    "ticket",
+    "reservation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

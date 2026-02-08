@@ -3,11 +3,8 @@ body{
     justify-content:center ;
     align-items: center;
     min-height: 100vh;
+    background: url("image4.jpg") no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background:url("image4.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 .signup-box{
     width: 360px;
