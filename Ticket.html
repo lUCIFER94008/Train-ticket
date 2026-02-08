@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Printing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url("image4.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav img {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-container, .ticket-container {
+            padding: 20px;
+            background:rgba(255, 255, 255, 0.8);;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background: #45a049;
+        }
+
+        .ticket-container {
+            display: none;
+        }
+
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ticket-header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .ticket-info p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .ticket-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .add-passenger-btn {
+            background: #007bff;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .add-passenger-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Train Ticket</h1>
+
+       
+
+        <!-- Main Site Navigation -->
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking1.html">Booking</a></li>
+                <li><a href="Payement1.html">Payment</a></li>
+                <li><a href="Cancelation.html">Cancellation Or Modify</a></li>
+                
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Form to Input Details -->
+        <div class="form-container">
+            <h1>Enter Ticket Details</h1>
+            <form id="ticketForm">
+                <label for="trainNumber">Train Number:</label>
+                <input type="number" id="trainNumber" placeholder="e.g., 12345" required>
+
+                <label for="trainName">Train Name:</label>
+                <input type="text" id="trainName" placeholder="e.g., Express Train" required>
+
+                <label for="journeyDate">Journey Date:</label>
+                <input type="date" id="journeyDate" required>
+
+                <label for="departureTime">Departure Time:</label>
+                <input type="time" id="departureTime" required>
+
+                <label for="class">Class:</label>
+                <select id="class" required>
+                    <option value="" disabled selected>Select Class</option>
+                    <option>First Class/1A</option>
+                    <option>AC 2 Tier</option>
+                    <option>AC 3 Tier</option>
+                    <option>Executive Class</option>
+                    <option>AC Chair Car</option>
+                    <option>Sleeper Class</option>
+                    <option>Second Class</option>
+                    <option>General</option>
+                </select>
+
+                <label for="price">Ticket Price:</label>
+                <input type="number" id="price" placeholder="e.g., 350" required>
+
+                <label>Passenger Names:</label>
+                <div id="passengerContainer">
+                    <input type="text" name="passengerName" placeholder="Enter passenger name" required>
+                </div>
+                <button type="button" class="add-passenger-btn" onclick="addPassenger()">Add Another Passenger</button>
+
+                <button type="button" onclick="generateTicket()">Generate Ticket</button>
+            </form>
+        </div>
+
+        <!-- Ticket Display -->
+        <div class="ticket-container" id="ticketContainer">
+            <div class="ticket-header">
+                <h1>Train Ticket</h1>
+                <p>Thank you for your payment!</p>
+            </div>
+
+            <div class="ticket-info">
+                <p><strong>Train Number:</strong> <span id="ticketTrainNumber"></span></p>
+                <p><strong>Train Name:</strong> <span id="ticketTrainName"></span></p>
+                <p><strong>Journey Date:</strong> <span id="ticketJourneyDate"></span></p>
+                <p><strong>Departure Time:</strong> <span id="ticketDepartureTime"></span></p>
+                <p><strong>Class:</strong> <span id="ticketClass"></span></p>
+                <p><strong>Ticket Price:</strong> $<span id="ticketPrice"></span></p>
+                <p><strong>Passengers:</strong></p>
+                <ul id="ticketPassengerList"></ul>
+            </div>
+
+            <div class="ticket-footer">
+                <button class="btn" onclick="window.print()">Print Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addPassenger() {
+            const container = document.getElementById("passengerContainer");
+            const input = document.createElement("input");
+            input.type = "text";
+            input.name = "passengerName";
+            input.placeholder = "Enter passenger name";
+            input.required = true;
+            container.appendChild(input);
+        }
+
+        function generateTicket() {
+            // Get form values
+            const trainNumber = document.getElementById("trainNumber").value;
+            const trainName = document.getElementById("trainName").value;
+            const journeyDate = document.getElementById("journeyDate").value;
+            const departureTime = document.getElementById("departureTime").value;
+            const trainClass = document.getElementById("class").value;
+            const price = document.getElementById("price").value;
+
+            // Get passenger names
+            const passengerInputs = document.getElementsByName("passengerName");
+            const passengerList = document.getElementById("ticketPassengerList");
+            passengerList.innerHTML = ""; // Clear existing passengers
+            for (const input of passengerInputs) {
+                const li = document.createElement("li");
+                li.textContent = input.value;
+                passengerList.appendChild(li);
+            }
+
+            // Populate ticket
+            document.getElementById("ticketTrainNumber").innerText = trainNumber;
+            document.getElementById("ticketTrainName").innerText = trainName;
+            document.getElementById("ticketJourneyDate").innerText = journeyDate;
+            document.getElementById("ticketDepartureTime").innerText = departureTime;
+            document.getElementById("ticketClass").innerText = trainClass;
+            document.getElementById("ticketPrice").innerText = price;
+
+            // Show ticket
+            document.getElementById("ticketContainer").style.display = "block";
+        }
+    </script>
+</body>
+</html>

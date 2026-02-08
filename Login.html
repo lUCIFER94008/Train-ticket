@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script language="javascript">
+        function validate(event) {
+            event.preventDefault(); // Stops form submission
+            var user = document.f1.username.value;
+            var pass = document.f1.pass.value;
+
+            if (user === "" || pass === "") {
+                window.alert("Please fill all fields.");
+                return false;
+            } else if (user.length<6|| pass.length < 2) {
+                window.alert("Username and password must each be at least 6 characters long.");
+                return false;
+            } else {
+                window.alert("Successfully logged in.");
+                // Redirect to the home page
+                window.location.href = "home.html"; // Update with your home page URL
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <form name="f1" onsubmit="return validate(event);">
+            <h1>Login</h1>
+            <div class="input-box">
+        
+                <input type="text" id="username" placeholder="Username" name="username">
+            </div><br>
+            <div class="input-box">
+                <img src=""></img>
+                <input type="password" id="password" placeholder="Password" name="pass">
+            </div><br>
+            <div>
+                <button type="submit" class="btn">Login</button>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="Project sign page.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

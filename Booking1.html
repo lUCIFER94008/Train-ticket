@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("image4.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav img {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+
+        main {
+            padding: 20px;
+        }
+        .container{
+    display: flex;
+    align-items: center;
+}
+
+.container form{
+    width: 75%;
+    padding: 60px;
+    background: #fff;
+    border-radius:20px;
+}
+
+        .signup-content .radio {
+            margin: 10px 10px;
+        }
+
+        .signup-content2 .input,
+        .signup-content2 .tarikh,
+        .signup-content2 .person,
+        .signup-content2 .travel2 {
+            width: 400px;
+            padding: 10px;
+            margin: 10px;
+            color: black;
+        }
+
+        .submit-btn {
+            border: none;
+            outline: none;
+            width: 200px;
+            padding: 10px;
+            margin-left: 200px;
+            background-color: #ffcc00;
+            color: black;
+        }
+        .image-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.moving-image {
+    width:450px; /* Adjust the size of the image */
+    position: relative;
+    animation: moveImage 10s linear infinite; /* Animation will loop infinitely */
+}
+
+/* Keyframes for moving the image */
+@keyframes moveImage {
+    0% {
+        transform: translateX(-100%); /* Start from left side, off screen */
+    }
+    100% {
+        transform: translateX(100vw); /* Move to the right side of the screen */
+    }
+}
+
+        .submit-btn:hover {
+            background-color: #ff9900;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .signup-content2 .input,
+            .signup-content2 .tarikh,
+            .signup-content2 .person,
+            .signup-content2 .travel2 {
+                width: 100%;
+            }
+
+            .submit-btn {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Booking Page</h1>
+
+        <!-- User Authentication Navigation -->
+        <nav>
+            <ul>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Project sign page.html">Signup</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Site Navigation -->
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking1.html">Booking</a></li>
+                <li><a href="Payement1.html">Payment</a></li>
+                <li><a href="Cancelation.html">Cancellation Or Modify</a></li>
+                
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <main>
+        
+        <div class="container">
+        <form id="booking-form" action="avail.html  ">
+                <div class="Signup-head bg-warning">
+                    <h1 style="color: black;">Reserve Your Ticket</h1>
+                </div>
+                <div class="signup-content">
+                    <input type="radio" class="radio" name="r" id="one-way" onclick="toggleReturnDate()">
+                    <label for="one-way" class="text-white">One Way</label>
+                    <input type="radio" class="radio" name="r" id="return" onclick="toggleReturnDate()">
+                    <label for="return" class="text-white">Return</label>
+                </div>
+
+                <div class="signup-content2">
+                    <label for="from" class="text-white">From</label>
+                    <input type="text" id="from" placeholder="From" class="input bg-dark" required>
+
+                    <label for="to" class="text-white">To</label>
+                    <input type="text" id="to" placeholder="To" class="input bg-dark" required><br>
+
+                    <label for="depart" class="text-white">Depart</label>
+                    <input type="date" id="depart" class="tarikh bg-dark text-white" required>
+
+                    <label for="return-date" class="text-white">Return</label>
+                    <input type="date" id="return-date" class="tarikh bg-dark" disabled><br>
+
+                    <input type="number" id="adults" class="bg-dark person" placeholder="Adults" required>
+                    <input type="number" id="children" class="bg-dark person" placeholder="Children"><br>
+
+                    <label for="travel-class" class="text-white">Travel Class</label>
+                    <select id="travel-class" class="bg-dark text-white travel2">
+                        <option value="First Class/1A">First Class/1A</option>
+                        <option value="AC 2tier/2A">AC 2tier/2A</option>
+                        <option value="AC 3tier/3A">AC 3tier/3A</option>
+                        <option value="Executive class chair car">Executive class chair car</option>
+                        <option value="Economy Class">Economy Class</option>
+                        <option value="AC Chair Car">AC Chair Car</option>
+                        <option value="Sleeper Class">Sleeper Class</option>
+                        <option value="Second Class">Second Class</option>
+                        <option value="General">General</option>
+                    </select>
+
+                    <input type="submit" value="BOOK NOW" class="submit-btn bg-warning" onclick="">
+                </div>
+                
+            </div>
+            <div class="image-container"><img src="trrain-removebg-preview.png" class="moving-image"></div>
+        </form>
+    </main>
+
+    <script>
+        // Function to toggle the "Return" date field visibility based on the selected radio button
+        function toggleReturnDate() {
+            var returnRadio = document.getElementById("return");
+            var returnDateField = document.getElementById("return-date");
+
+            // If "Return" is selected, enable the "Return" date field, else disable it
+            if (returnRadio.checked) {
+                returnDateField.disabled = false;
+            } else {
+                returnDateField.disabled = true;
+                returnDateField.value = ""; // Clear the return date if not selected
+            }
+        }
+
+        // Basic form validation before submitting
+        document.getElementById("booking-form").addEventListener("submit", function(event) {
+            var from = document.getElementById("from").value;
+            var to = document.getElementById("to").value;
+            var depart = document.getElementById("depart").value;
+            var adults = document.getElementById("adults").value;
+
+            if (!from || !to || !depart || !adults) {
+                alert("Please fill out all required fields.");
+                event.preventDefault();  // Prevent form submission if validation fails
+            }
+        });
+    </script>
+</body>
+</html>

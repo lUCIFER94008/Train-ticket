@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("image4.jpg") no-repeat center;
+            background-size: cover;
+        }
+        
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav img{
+            float: right;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+        }
+
+        .container form {
+            width: 700px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .input-box {
+            margin: 15px 0;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-box input, .input-box select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .image-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.moving-image {
+    width: 150px; /* Adjust the size of the image */
+    position: relative;
+    animation: moveImage 10s linear infinite; /* Animation will loop infinitely */
+}
+
+/* Keyframes for moving the image */
+@keyframes moveImage {
+    0% {
+        transform: translateX(-100%); /* Start from left side, off screen */
+    }
+    100% {
+        transform: translateX(100vw); /* Move to the right side of the screen */
+    }
+}
+        .qr-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-container img {
+            width: 200px;
+            height: 200px;
+            display:1; /* Hidden by default */
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: yellowgreen;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Payment</h1>
+        <nav>
+            <ul>
+            <li style="float: left;"><a href="Login.html">Login</a></li>
+                    <li style="float: left;"><a href="Project sign page.html">Signup</a></li></ul></nav>
+            <nav>
+                <ul>
+                    
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Booking1.html">Booking </a></li>
+                    <li><a href="Payement1.html">Payement</a></li>
+                    <li><a href="Cancelation.html">Cancelletion Or Modify</a></li>
+                    <li><a href="Contact us.html">Contact Us</a></li>
+                    <li><a href="About Us.html">About Us</a></li>
+                </ul>
+            
+            </nav>
+    </header>
+
+    <main>
+        <div class="image-container">
+            <img src="upi.png" width="5%" height="5%" alt="Moving Image" class="moving-image">
+            <img src="G-.png" width="5%" height="5%" alt="Moving Image" class="moving-image">
+            <img src="Paypal.png" width="5%" height="5%" alt="Moving Image" class="moving-image">
+            <img src="card.jpeg" width="5%" height="10%" alt="Moving Image" class="moving-image"></div>
+        <div class="container">
+            <form action="Ticket.html" onsubmit="return validateForm()">
+                <fieldset>
+                    <legend><b>Choose Payment Method</b></legend>
+                    <input type="radio" name="payment-method" id="net-banking" onclick="togglePaymentFields()" required>
+                    <label for="net-banking"><b>Net Banking</b></label>
+
+                    <input type="radio" name="payment-method" id="online-payment" onclick="togglePaymentFields()" required>
+                    <label for="online-payment"><b>Online Payment</b></label>
+                </fieldset>
+
+                <div id="net-banking-fields">
+                    <div class="input-box">
+                        <label for="card-number">Credit Card Number:</label>
+                        <input type="text" id="card-number" placeholder="xxxx xxxx xxxx xxxx" pattern="\d{16}">
+                    </div>
+                    <div class="input-box">
+                        <label for="cvv">CVV:</label>
+                        <input type="password" id="cvv" placeholder="123" pattern="\d{3}">
+                    </div>
+                </div>
+
+                <div id="online-payment-fields">
+                    <div class="input-box">
+                        <label>Select Platform:</label>
+                        <select id="payment-platform">
+                            <option value="" disabled selected>Choose a platform</option>
+                            <option>G.Pay</option>
+                            <option>PhonePe</option>
+                            <option>Paytm</option>
+                            <option>Fam Pay</option>
+                            <option>PayPal</option>
+                        </select>
+                    </div>
+                    <div class="qr-container">
+                        <p>Scan QR Code to Pay</p>
+                        <img id="qr-code" src="Qrcode.jpg.jpg" alt="QR Code for Payment">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function validateForm() {
+            const netBanking = document.getElementById("net-banking").checked;
+            const onlinePayment = document.getElementById("online-payment").checked;
+
+            if (netBanking) {
+                const cardNumber = document.getElementById("card-number").value;
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    alert("Please enter a valid 16-digit card number.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function togglePaymentFields() {
+            const netBanking = document.getElementById("net-banking").checked;
+            const onlinePayment = document.getElementById("online-payment").checked;
+
+            document.getElementById("net-banking-fields").style.display = netBanking ? "block" : "none";
+            document.getElementById("online-payment-fields").style.display = onlinePayment ? "block" : "none";
+
+            const qrCode = document.getElementById("qr-code");
+            qrCode.style.display = onlinePayment ? "block" : "none";
+        }
+
+        window.onload = function() {
+            document.getElementById("net-banking-fields").style.display = "none";
+            document.getElementById("online-payment-fields").style.display = "none";
+        };
+    </script>
+
+</body>
+</html>

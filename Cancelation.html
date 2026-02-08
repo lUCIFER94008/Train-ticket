@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Cancellation - Railway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("image4.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav img {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 20px;
+        }
+
+        .container form {
+            width: 700px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-box {
+            margin: 15px 0;
+        }
+
+        .input-box span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-box input, .input-box select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: yellowgreen;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #4CAF50;
+            color: white;
+        }
+
+        footer {
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .container form {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Ticket Cancellation</h1>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking1.html">Booking</a></li>
+                <li><a href="Payement1.html">Payment</a></li>
+                <li><a href="Cancelation.html">Cancellation Or Modify</a></li>
+                <li><a href="Contact us.html">Contact</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <form id="cancellation-form">
+            <h3 class="title">Cancel Your Ticket</h3>
+
+            <!-- Ticket ID -->
+            <div class="input-box">
+                <span>Ticket ID</span>
+                <input type="text" id="ticket-id" placeholder="Enter your Ticket ID" required>
+            </div>
+
+            <!-- Name -->
+            <div class="input-box">
+                <span>Full Name</span>
+                <input type="text" id="full-name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Reason for Cancellation -->
+            <div class="input-box">
+                <span>Reason for Cancellation</span>
+                <select id="cancellation-reason" required>
+                    <option value="">Select a reason</option>
+                    <option value="Personal reasons">Personal reasons</option>
+                    <option value="Travel plans changed">Travel plans changed</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn" onclick="validate()">Submit Cancellation Request</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Railway System | All rights reserved</p>
+    </footer>
+
+    <script>
+        
+        document.getElementById("cancellation-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+            
+            // Collect form data
+            const ticketId = document.getElementById("ticket-id").value;
+            const fullName = document.getElementById("full-name").value;
+            const cancellationReason = document.getElementById("cancellation-reason").value;
+
+            // Simple validation to check if all fields are filled
+            if (ticketId && fullName && cancellationReason) {
+                // Simulate the cancellation process
+                alert("Cancellation Request Submitted!\n\nTicket ID: " + ticketId + "\nName: " + fullName + "\nReason: " + cancellationReason);
+                // Optionally, send the data to the server for processing (AJAX request)
+                
+                // Reset form after submission
+                window.alert("Succesfully Canceled");
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        window.alert("Succesfully Canceled");
+        });
+    </script>
+</body>
+</html>
